@@ -24,8 +24,8 @@ then
   git clone "${git_src_1}"
   git checkout dev
   git branch
-  [ ! -d ./"${git_src_1_folder}"/modules ] && mkdir "${git_src_1_folder}"/modules
-  cd ./"${git_src_1_folder}"/modules/
+  [ ! -d ./"${git_src_1_folder}"/Modules ] && mkdir "${git_src_1_folder}"/Modules
+  cd ./"${git_src_1_folder}"/Modules/
   if [ ! -d ./"${git_src_2_folder}" ]
   then
     echo " - git clone ${git_src_2}"
@@ -52,12 +52,12 @@ else
   git checkout dev;git branch
   cd ..
   echo " - update from ${git_src_2}"
-  cd ./"${git_src_1_folder}"/modules/"${git_src_2_folder}"/
+  cd ./"${git_src_1_folder}"/Modules/"${git_src_2_folder}"/
   git push
   git checkout dev;git branch
   cd ../../../
   echo " - update from ${git_src_3}"
-  cd ./"${git_src_1_folder}"/modules/"${git_src_3_folder}"/
+  cd ./"${git_src_1_folder}"/Modules/"${git_src_3_folder}"/
   git push
   git checkout dev;git branch
   cd ../../../
@@ -96,6 +96,8 @@ cd /www
 composer install
 php artisan cache:clear
 php artisan migrate:fresh
+echo " - clear cache."
+rm -rf /www/resources/reactViews/themes/default/src/modules/*
 npm install
 #npm run dev
 npm run prod
